@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Handy Servant</title>
+    <link rel="stylesheet" href="../Css Sub pages/services.css">
+</head>
+<body>
+    <header>
+        <h1>Handy Servant</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="bookings.html">Booking</a></li>
+                <li><a href="contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+<!--Slideshow container-->
+<div class="slideshow">
+<div class="slideshow-container">
+<!--Full-width images with number and caption text -->
+<div class="mySlides fade">
+<div class="numbertext"></div>
+<img src="../Images/Before paint.jpeg">
+<div class="text"></div>
+</div>
+<div class="mySlides fade">
+<div class="numbertext"></div>
+
+<img src="../Images/After paint.jpeg">
+<div class="text"></div>
+</div>
+<div class="mySlides fade">
+<div class="numbertext"></div>
+
+<img src="../Images/Siding Before .jpeg">
+<div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+<div class="numbertext"></div>
+<img src="../Images/Siding after.jpeg">
+<div class="text"></div>
+</div>
+<!-- The dots/circles --> 
+<div style="text-align:center">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+</div>
+   <h1>Our Services</h1>
+    <section id="services">
+        <div class="service1">
+            <h3><a href="../Services Sub Page/Tv mounting.html">Tv Mounting</a></h3>
+            <p>Basic tv mounting starting at $75. Diffrent prices for various packages.</p>
+            <p>If tv mounting project is $300 or more we will include a basic tv mount for free.</p>
+        </div>
+    </section>
+    <section>
+        <div class="service2">
+            <h3><a href="../Services Sub Page/Gutter Cleaning.html">Gutter Cleaning(single story only)</a></h3>
+            <p>Starting at $200</p>
+            <p>Basic labor to clean gutters with favorable site conditions. Remove debris from gutters no higher than 10 ft above ground, clean and replace filter screens, check proper water drainage. Clean light staining and dirt from visible gutter surfaces. Repairs not included. Includes planning, equipment and material acquisition, area preparation and protection, setup and cleanup.</p>
+        </div>
+    </section>
+    <section>
+        <div class="service3">
+            <h3><a href="../Services Sub Page/Drywall.html">Drywall Installation & Repair</a></h3>
+            <p>Average cost to install drywall - $2.35 sf</p>
+            <p>Drywall Repair Labor, Basic - starting at $200</p>
+            <p>Basic labor to repair drywall with favorable site conditions. Clean cut and size drywall hole. Fabricate and fit sheetrock patch. Tape and mud joint. Lightly sand and re-mud joint. Final sand for primer/finish ready. Includes planning, equipment and material acquisition, area preparation and protection, setup and cleanup.</p>
+        </div>
+    </section>
+    <section>
+        <div class="service4">
+            <h3><a href="../Services Sub Page/Ceiling Fan.html">Ceiling Fan Installation</a></h3>
+            <p>Starting at $370</p>
+            <p>Basic labor to install ceiling fan with favorable site conditions. Mount support bracket to ceiling joists. Branch power from existing circuit. Assemble and secure fan, controller and trim plates. Includes planning, equipment and material acquisition, area preparation and protection, setup and cleanup.</p>
+        </div>
+    </section>
+    <section>
+        <div class="service5">
+            <h3><a href="../Services Sub Page/Sink.html">Sink Faucet Installation</a></h3>
+            <p>Starting at $200</p>
+            <p>Basic labor to install bathroom faucet with favorable site conditions. Assemble, place and secure faucet. Connect supply lines between existing shut-off valves and faucet. Leak and flow test. Includes planning, equipment and material acquisition, area preparation and protection, setup and cleanup.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Handy Servant. All rights reserved.</p>
+    </footer>
+    <script>let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+              let slides = 
+    document.getElementsByClassName("mySlides");
+              let dots = 
+    document.getElementsByClassName("dot");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
+}</script>
+</body>
+</html>

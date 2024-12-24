@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="booking-container">
+        <header class="header">
+           
+        </header>
+        <h1>Book a Service</h1>
+        <div class="calendar">
+            <!-- Calendar Header -->
+            next-month">&gt;</button>
+            </div>
+            <!-- Calendar Body -->
+            <form action="/submit-booking" method="post">
+            <label for="date">Choose a date:</label>
+            <input type="date" id="date" name="date" required>
+            <label for="time">Choose a time:</label>
+            <input type="time" id="time" name="time" required>
+            <button type="submit">Book Now</button>
+        </form>
+            <div class="calendar-body">
+                <div class="day-names">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div class="days">
+                    <!-- Days will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+        <div class="integration-buttons">
+            <button class="google-calendar" onclick="addToGoogleCalendar()">Add to Google Calendar</button>
+            <button class="apple-calendar" onclick="addToAppleCalendar()">Add to Apple Calendar</button>
+        </div>
+    </div>
+
+    <script>
+        function addToGoogleCalendar() {
+            const eventTitle = "Handy Service Appointment";
+            const eventDescription = "Description of the service.";
+            const eventLocation = "123 Main St, Anytown, USA";
+            const startDateTime = "2024-07-01T10:00:00";
+            const endDateTime = "2024-07-01T11:00:00";
+            
+            const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&dates=${startDateTime.replace(/-/g, '').replace(/:/g, '')}/${endDateTime.replace(/-/g, '').replace(/:/g, '')}`;
+            window.open(googleCalendarUrl, '_blank');
+        }
+
+        function addToAppleCalendar() {
+            const eventTitle = "Handy Service Appointment";
+            const eventDescription = "Description of the service.";
+            const eventLocation = "123 Main St, Anytown, USA";
+            const startDateTime = "2024-07-01T10:00:00";
+            const endDateTime = "2024-07-01T11:00:00";
+            
+            const appleCalendarUrl = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:${encodeURIComponent(eventTitle)}%0D%0ADESCRIPTION:${encodeURIComponent(eventDescription)}%0D%0ALOCATION:${encodeURIComponent(eventLocation)}%0D%0ADTSTART:${startDateTime.replace(/-/g, '').replace(/:/g, '').replace('T', 'T')}%0D%0ADTEND:${endDateTime.replace(/-/g, '').replace(/:/g, '').replace('T', 'T')}%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR`;
+            window.open(appleCalendarUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
