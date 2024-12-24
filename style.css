@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ccad00;
+    color: #333;
+}
+
+header {
+    background: url('Images/Handy logo.PNG') no-repeat top center;
+    background-size: 310px 190px; /* Adjust the size of the background image */
+    color: white;
+    padding: 4em 0 1em; /* Add padding to create space for the image */
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    margin-top: 3em; /* Adjust margin to position title below image */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: large bold;
+}
+
+header nav ul :hover{
+    color: red;
+
+}
+
+h1 {
+    margin-top: 1em;
+    color: #800000;
+}
+
+h2 {
+    margin-top: 1em;
+    color: #800000;
+    float: ;
+}
+
+section {
+    padding: 2em;
+    margin: 1em auto;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.service {
+    margin-bottom: 2em;
+}
+
+#reasons ul li input[type="checkbox"]:checked {
+    text-decoration: line-through;
+
+}
+
+
+
+#booking button:hover{
+    color:#48cae4;
+}
+
+#contact button:hover{
+    color:#48cae4;
+}
+
+h2, h3 {
+    color: #800000;
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #800000;
+    color: darkgrey;
+}

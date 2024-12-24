@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handy Servant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+       <h1></h1>
+                <nav>
+            <ul>
+							
+				<li><a href="index.html">Home</a></li>
+                <li><a href="Html Sub pages/services.html">Services</a></li>
+                <li><a href="Html Sub pages/bookings.html">Booking</a></li>
+                <li><a href="Html Sub pages/contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="services">
+        <h1>Professional Home Repair and Handyman Services</h1>
+
+<h2>Maintaining your home or business shouldn't be a struggle. Handy Servant is your trusted partner, offering the expertise to tackle any project.</h2>
+
+<h2>Common handyman services we offer include:</h2>
+        <ul>
+           <li>Plumbing Repairs</li>
+           <li>Electrical Work</li>
+           <li>Painting and Drywall</li>
+           <li>Carpentry</li>
+           <li>Furniture Assembly</li>
+           <li>General Home Repairs</li>
+</ul>
+        <!-- Add details about services here -->
+    </section>
+
+    <section id="reasons">
+    <h3>
+    <p>Reasons To Hire the Handy Servant</p>
+    </h3>
+    <ul>
+    <h4>
+       <p><li>Trusted and qualified experts</li></p>
+       <p><li>Professional Services</li></p>
+       <p><li>Local</li></p>
+       <p><li>Worry-free experience</li></p>
+       <p><li>Convenient scheduling</li></p>
+       <p><li>Upfront costs</li></p>
+       <p><li>Free estimates</li></p>
+       <p><li>A Neighborly Company!</p>
+       <p>We understand your time is valuable. That's why we arrive on time and fully equipped, respecting your schedule. Our goal is to keep your home or business running smoothly so you can focus on what matters most.</p>
+       </li>
+    </h4>
+    </ul>
+    </section>
+
+    <section>
+        <h2>Services</h2>
+        <p><li>Ceiling Fan Installation</li></p>
+        <p><li>Appliance Repair & Installation</li></p>
+        <p><li>Lighting Installation</li></p>
+        <p><li>Electrical Installation & Repairs</li></p>
+        <p><li>Flooring Installation</li></p>
+        <p><li>And Much More</li></p>
+    </section>
+
+    <section id="booking">
+        <h2>Booking</h2>
+        <p>Book an appointment with us using the calendar below.</p>
+        <!-- Booking form with a calendar will be added here -->
+        <form action="/submit-booking" method="post">
+            <label for="date">Choose a date:</label>
+            <input type="date" id="date" name="date" required>
+            <label for="time">Choose a time:</label>
+            <input type="time" id="time" name="time" required>
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="/submit-contact" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Handy Servant. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript code for calendar integration would go here
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ics/2.18.0/ics.deps.min.js"></script>
+<script>
+    document.querySelector('form[action="/submit-booking"]').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const eventDetails = {
+            title: 'Handy Servant Booking',
+            description: 'Appointment with Handy Servant',
+            location: 'Your Address Here',
+            begin: `${date}T${time}:00`,
+            duration: { hours: 1 }
+        };
+
+        const cal = ics();
+        cal.addEvent(eventDetails.title, eventDetails.description, eventDetails.location, eventDetails.begin, eventDetails.duration);
+        cal.download('Handy_Servant_Booking');
+    });
+</script>
+    </script>
+</body>
+</html>
