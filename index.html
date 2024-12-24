@@ -67,19 +67,6 @@
         <p><li>And Much More</li></p>
     </section>
 
-    <section id="booking">
-        <h2>Booking</h2>
-        <p>Book an appointment with us using the calendar below.</p>
-        <!-- Booking form with a calendar will be added here -->
-        <form action="/submit-booking" method="post">
-            <label for="date">Choose a date:</label>
-            <input type="date" id="date" name="date" required>
-            <label for="time">Choose a time:</label>
-            <input type="time" id="time" name="time" required>
-            <button type="submit">Book Now</button>
-        </form>
-    </section>
-
     <section id="contact">
         <h2>Contact Us</h2>
         <form action="/submit-contact" method="post">
@@ -100,25 +87,5 @@
     <script>
         // JavaScript code for calendar integration would go here
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ics/2.18.0/ics.deps.min.js"></script>
-<script>
-    document.querySelector('form[action="/submit-booking"]').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const date = document.getElementById('date').value;
-        const time = document.getElementById('time').value;
-        const eventDetails = {
-            title: 'Handy Servant Booking',
-            description: 'Appointment with Handy Servant',
-            location: 'Your Address Here',
-            begin: `${date}T${time}:00`,
-            duration: { hours: 1 }
-        };
-
-        const cal = ics();
-        cal.addEvent(eventDetails.title, eventDetails.description, eventDetails.location, eventDetails.begin, eventDetails.duration);
-        cal.download('Handy_Servant_Booking');
-    });
-</script>
-    </script>
 </body>
 </html>
