@@ -1,103 +1,80 @@
-const calendarGrid = document.getElementById('calendarGrid');
-const monthYear = document.getElementById('monthYear');
-const prevMonth = document.getElementById('prevMonth');
-const nextMonth = document.getElementById('nextMonth');
-const selectedDateDisplay = document.getElementById('selectedDate');
-const bookSlotButton = document.getElementById('bookSlot');
-const bookingMessage = document.getElementById('bookingMessage');
-const nameInput = document.getElementById('name');
+// Initialize EmailJS
+(function() {
+    emailjs.init('HhcxKoOImXexNN1Jr'); // Replace with your EmailJS User ID
+})();
 
-let currentDate = new Date();
-let bookings = {}; // Store bookings in { 'YYYY-MM-DD': 'Name' } format
-let selectedDate = null;
+// Handle Form Submission
+document.getElementById('booking-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent page reload
 
-// Render Calendar
-function renderCalendar() {
-    calendarGrid.innerHTML = '';
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    monthYear.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const service = document.getElementById('service').value;
 
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    for (let i = 0; i < firstDay; i++) {
-        const emptyCell = document.createElement('div');
-        calendarGrid.appendChild(emptyCell);
-    }
-
-    for (let day = 1; day <= daysInMonth; day++) {
-        const date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const dayCell = document.createElement('div');
-        dayCell.classList.add('calendar-day');
-        dayCell.textContent = day;
-
-        if (bookings[date]) {
-            dayCell.classList.add('booked');
-            dayCell.title = `Booked by: ${bookings[date]}`;
-        }
-
-        dayCell.addEventListener('click', () => selectDate(date, dayCell));
-
-        calendarGrid.appendChild(dayCell);
-    }
-}
-
-// Select a date
-function selectDate(date, dayCell) {
-    if (bookings[date]) return; // Don't allow booking on already booked dates
-
-    document.querySelectorAll('.calendar-day').forEach(day => day.classList.remove('selected'));
-    dayCell.classList.add('selected');
-    selectedDate = date;
-    selectedDateDisplay.textContent = date;
-}
-
-// Book a slot
-bookSlotButton.addEventListener('click', () => {
-    if (!selectedDate) {
-        bookingMessage.textContent = 'Please select a date first!';
-        bookingMessage.style.color = 'red';
-        return;
-    }
-    if (!nameInput.value.trim()) {
-        bookingMessage.textContent = 'Please enter your name!';
-        bookingMessage.style.color = 'red';
+    if (!date || !time || !service) {
+        alert('Please fill out all fields before submitting.');
         return;
     }
 
-    // Save booking locally
-    bookings[selectedDate] = nameInput.value.trim();
+    // Prepare EmailJS template parameters
+    const templateParams = {
+        date: date,
+        time: time,
+        service: service,
+        email_to: 'handyservant864@gmail.com'
+    };
 
-    // Prepare email details
-    const email = "handyservant864@gmail.com";
-    const subject = encodeURIComponent("New Booking Confirmation");
-    const body = encodeURIComponent(
-        `Booking Details:\n\nName: ${nameInput.value.trim()}\nDate: ${selectedDate}`
-    );
-
-    // Open email client
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-
-    // Clear fields and refresh
-    bookingMessage.textContent = `Slot booked successfully for ${selectedDate} by ${nameInput.value}!`;
-    bookingMessage.style.color = 'green';
-    selectedDateDisplay.textContent = 'None';
-    selectedDate = null;
-    nameInput.value = '';
-    renderCalendar();
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+            alert('Booking successfully sent!');
+            document.getElementById('booking-form').reset();
+        }, function(error) {
+            alert('Failed to send booking: ' + error.text);
+        });
 });
 
-// Change Month
-prevMonth.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    renderCalendar();
-});
+// Google Calendar Integration
+function addToGoogleCalendar() {
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const service = document.getElementById('service').value;
 
-nextMonth.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    renderCalendar();
-});
+    if (!date || !time || !service) {
+        alert('Please select a date, time, and service before adding to your calendar.');
+        return;
+    }
 
-// Initialize Calendar
-renderCalendar();
+    const startDateTime = `${date}T${time}:00`;
+    const endDateTime = `${date}T${parseInt(time.split(':')[0]) + 1}:${time.split(':')[1]}:00`;
+
+    const eventTitle = "Handy Service Appointment";
+    const eventDescription = `Service: ${service}`;
+    const eventLocation = "123 Main St, Anytown, USA";
+
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&dates=${startDateTime.replace(/[-:]/g, '')}/${endDateTime.replace(/[-:]/g, '')}`;
+
+    window.open(googleCalendarUrl, '_blank');
+}
+
+// Apple Calendar Integration
+function addToAppleCalendar() {
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const service = document.getElementById('service').value;
+
+    if (!date || !time || !service) {
+        alert('Please select a date, time, and service before adding to your calendar.');
+        return;
+    }
+
+    const startDateTime = `${date}T${time.replace(':', '')}00`;
+    const endDateTime = `${date}T${(parseInt(time.split(':')[0]) + 1).toString().padStart(2, '0')}${time.split(':')[1]}00`;
+
+    const eventTitle = "Handy Service Appointment";
+    const eventDescription = `Service: ${service}`;
+    const eventLocation = "123 Main St, Anytown, USA";
+
+    const appleCalendarUrl = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:${encodeURIComponent(eventTitle)}%0D%0ADESCRIPTION:${encodeURIComponent(eventDescription)}%0D%0ALOCATION:${encodeURIComponent(eventLocation)}%0D%0ADTSTART:${startDateTime}%0D%0ADTEND:${endDateTime}%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR`;
+
+    window.open(appleCalendarUrl, '_blank');
+}
