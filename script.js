@@ -24,7 +24,7 @@ document.getElementById('booking-form').addEventListener('submit', function(even
         email_to: 'handyservant864@gmail.com'
     };
 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+    emailjs.send('service_gn2697b', 'template_y0qf5ro', templateParams)
         .then(function(response) {
             alert('Booking successfully sent!');
             document.getElementById('booking-form').reset();
@@ -45,7 +45,7 @@ function addToGoogleCalendar() {
     }
 
     const startDateTime = `${date}T${time}:00`;
-    const endDateTime = `${date}T${parseInt(time.split(':')[0]) + 1}:${time.split(':')[1]}:00`;
+    const endDateTime = `${date}T${(parseInt(time.split(':')[0]) + 1).toString().padStart(2, '0')}:${time.split(':')[1]}:00`;
 
     const eventTitle = "Handy Service Appointment";
     const eventDescription = `Service: ${service}`;
@@ -53,6 +53,7 @@ function addToGoogleCalendar() {
 
     const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&dates=${startDateTime.replace(/[-:]/g, '')}/${endDateTime.replace(/[-:]/g, '')}`;
 
+    console.log("Google Calendar URL:", googleCalendarUrl);
     window.open(googleCalendarUrl, '_blank');
 }
 
@@ -76,5 +77,6 @@ function addToAppleCalendar() {
 
     const appleCalendarUrl = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ASUMMARY:${encodeURIComponent(eventTitle)}%0D%0ADESCRIPTION:${encodeURIComponent(eventDescription)}%0D%0ALOCATION:${encodeURIComponent(eventLocation)}%0D%0ADTSTART:${startDateTime}%0D%0ADTEND:${endDateTime}%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR`;
 
+    console.log("Apple Calendar URL:", appleCalendarUrl);
     window.open(appleCalendarUrl, '_blank');
 }
