@@ -1,22 +1,18 @@
-// Initialize EmailJS
-(function() {
-    emailjs.init('HhcxKoOImXexNN1Jr'); // Replace with your EmailJS User ID
-})();
-
-// Handle Form Submission
 document.getElementById('booking-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent page reload
-
+    event.preventDefault();
+    
     const date = document.getElementById('date').value;
     const time = document.getElementById('time').value;
     const service = document.getElementById('service').value;
-
+    
+    console.log('Form Data:', { date, time, service });
+    
     if (!date || !time || !service) {
+        console.error('Missing required fields');
         alert('Please fill out all fields before submitting.');
         return;
     }
 
-    // Prepare EmailJS template parameters
     const templateParams = {
         date: date,
         time: time,
@@ -24,11 +20,15 @@ document.getElementById('booking-form').addEventListener('submit', function(even
         email_to: 'handyservant864@gmail.com'
     };
 
+    console.log('Sending email with params:', templateParams);
+    
     emailjs.send('service_gn2697b', 'template_y0qf5ro', templateParams)
         .then(function(response) {
+            console.log('SUCCESS:', response);
             alert('Booking successfully sent!');
             document.getElementById('booking-form').reset();
         }, function(error) {
+            console.error('FAILED:', error);
             alert('Failed to send booking: ' + error.text);
         });
 });

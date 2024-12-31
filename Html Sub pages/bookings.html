@@ -15,8 +15,8 @@
         <div class="calendar-container">
             <div class="calendar-header"> 
                 <h2 id="current-month">January 2025</h2>
-                <button id="prev-month"> &lt;</button> 
-                <button id="next-month"> &gt;</button> 
+               <!-- <button id="prev-month"> &lt;</button> 
+                <button id="next-month"> &gt;</button> -->
             </div>
             <div class="calendar-body">
                 <div class="day-names">
@@ -59,12 +59,9 @@
         </div>
     </div>
 <script type="text/JavaScript" src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-<script>
-  emailjs.init('service_gn2697b'); // Replace with your actual Service ID
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-  // ... (Your form submission logic) ...
-</script>
+<script> emailjs.init('service_gn2697b'); </script>
 </body>
 </html> 
