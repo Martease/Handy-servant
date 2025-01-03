@@ -7,12 +7,17 @@ body {
 }
 
 header {
-    background: url('Images/Handy logo.PNG') no-repeat top center;
-    background-size: 310px 190px; 
-    color: white;
-    padding: 4em 0 1em; 
+    width: 100%;
+    color: white; 
     text-align: center;
+}
+
+.header {
+    background: url('../Images/Handyservant.png') no-repeat top center;
+    background-size: cover;
     position: relative;
+    height: 200px;
+    width: 100%;
 }
 
 header h1 {
