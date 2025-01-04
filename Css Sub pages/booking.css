@@ -11,7 +11,7 @@ body {
 
 header {
     background: url('../Images/Handyservant.png') no-repeat top center;
-    height: 200px;
+    height: 250px;
     width: 100%;
     background-size: 310px 190px; 
     color: white;
@@ -20,8 +20,12 @@ header {
     position: relative;
 }
 
+header h1 {
+    margin-top: 3em;
+}
+
 header nav {
-    margin-top: 0;
+    margin-top: 7em;
     position: relative;
     z-index: 1;
 }
@@ -53,11 +57,12 @@ header nav ul li a:hover {
 
 .booking-container {
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
+    /*height: 600px;*/
     text-align: center;
 }
 
@@ -80,76 +85,56 @@ h1 {
     margin-bottom: 20px;
 }
 
-.calendar {
-    margin-top: 20px;
+/* General styling for labels and spans */
+.form span,
+.form label {
+    font-family: 'Segoe UI', sans-serif; /* Change to your preferred font */
+    font-size: 25px; /* Adjust font size */
+    font-weight: 500; /* Make it bold if needed */
+    color: #333; /* Text color */
+    margin-bottom: 5px; /* Add spacing below */
+    display: block; /* Ensure they appear above the input */
 }
 
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 0 10px;
+/* Styling for inputs and select */
+.form input[type="text"],
+.form input[type="mail"],
+.form input[type="date"],
+.form input[type="time"],
+.form select {
+    font-family: 'Verdana', sans-serif; /* Different font for inputs */
+    font-size: 20px; /* Font size for inputs */
+    color: #555; /* Text color */
+    padding: 8px; /* Add some spacing inside inputs */
+    margin-bottom: 10px; /* Space between fields */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    width: 50%; /* Make them full width */
+    box-sizing: border-box; /* Ensure padding doesn’t affect width */
 }
 
-.calendar-header .month-year {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1.2em;
-    color: #333;
+.name {
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
-.calendar-header button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.mail {
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
-.calendar-header button:hover {
-    background-color: #0056b3;
+.date {
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
-.calendar-body {
-    display: grid;
-    grid-template-rows: auto 1fr;
-}
+.time [
+    
+]
 
-.day-names {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    background-color: #007bff;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    font-weight: bold;
-}
-
-.days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    padding: 10px;
-}
-
-.days span {
-    display: block;
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.days span:hover {
-    background-color: #f1f1f1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.service {
+    font-size: 20px;
+    margin: 15px 0;
 }
 
 .integration-buttons {

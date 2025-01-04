@@ -25,6 +25,7 @@
                     <div>
                         <span>Full Name:</span>
                         <input
+                        class="name"
                         type="text" 
                         autocomplete="off"
                         placeholder="John Doe"
@@ -34,6 +35,7 @@
                     <div>
                         <span>Email:</span>
                         <input
+                            class="mail"
                             type="mail"
                             autocomplete="off"
                             placeholder="jdoe@mail.com"
@@ -42,20 +44,20 @@
 
                     <div>
                         <span>Select Date:</span>
-                        <input type="date" id="date" name="date" required>
+                        <input type="date" class="date" name="date" required>
                         <label for="date"></label>   
                     </div>
 
                     <div>
                         <span>Select Time:</span>
-                        <input type="time" id="time" name="time" required>
+                        <input type="time" class="time" name="time" required>
                         <label for="time"></label>                       
                     </div>
 
                     <div>
                         <span></span>
                         <label for="service">Choose a service:</label>
-            <select id="service" name="service" required>
+            <select class="service" name="service" required>
                 <option value="tv-mounting">TV Mounting</option>
                 <option value="gutter-cleaning">Gutter Cleaning</option>
                 <option value="drywall-repair">Drywall Repair</option>
@@ -63,6 +65,7 @@
                 <option value="sink-faucet">Sink Faucet Installation</option>
             </select>
                     </div>
+                    <button type="submit">Book Now</button>
                 </form>
 
                 <div class="integration-buttons">
@@ -73,6 +76,37 @@
             </div>
 
         
-<script type="text/JavaScript" src="script.js"></script>
+            <script>
+                document.querySelector('.form').addEventListener('submit', async (event) => {
+                    event.preventDefault();
+            
+                    const formData = {
+                        fullname: document.querySelector('.name').value,
+                        email: document.querySelector('.mail').value,
+                        date: document.querySelector('.date').value,
+                        time: document.querySelector('.time').value,
+                        service: document.querySelector('.service').value
+                    };
+            
+                    try {
+                        const response = await fetch('http://localhost:3000/submit-form', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        });
+            
+                        if (response.ok) {
+                            alert('Booking submitted successfully!');
+                        } else {
+                            alert('Failed to submit booking. Please try again.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error submitting booking.');
+                    }
+                });
+            </script>
 </body>
 </html> 
